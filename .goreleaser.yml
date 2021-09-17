@@ -7,11 +7,12 @@ builds:
     env:
       - CGO_ENABLED=0
       - GO111MODULE=on
-      - PKG=github.com/uselagoon/lagoon-cli
     # Custom ldflags templates.
     # Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser`.
     ldflags:
-      - -s -w -X "{{.Env.PKG}}/cmd.lagoonCLIVersion={{.Version}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuild={{.Date}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuildGoVersion={{.Env.GOVERSION}}"
+      - -s -w -X github.com/uselagoon/lagoon-cli/cmd.lagoonCLIVersion={{ .Version }}
+        -X github.com/uselagoon/lagoon-cli/cmd.lagoonCLIBuild={{ .Date }}
+        -X github.com/uselagoon/lagoon-cli/cmd.lagoonCLIBuildGoVersion={{ .Env.GOVERSION }}
     goos:
       - linux
       - darwin

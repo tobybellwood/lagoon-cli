@@ -11,7 +11,7 @@ builds:
     # Custom ldflags templates.
     # Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser`.
     ldflags:
-      - -s -w -X "{{.Env.PKG}}/cmd.lagoonCLIVersion={{.Version}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuild={{.Date}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuildGoVersion={{.Env.GOLANG_VERSION}}"
+      - -s -w -X "{{.Env.PKG}}/cmd.lagoonCLIVersion={{.Version}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuild={{.Date}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuildGoVersion={{.Env.GOVERSION}}"
     goos:
       - linux
       - darwin

@@ -31,3 +31,4 @@ jobs:
           args: release --debug --skip-validate
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GOVERSION: ${{ env.GOVERSION }}

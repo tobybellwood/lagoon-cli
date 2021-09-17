@@ -1,0 +1,64 @@
+env:
+  - GO111MODULE=on
+  - GOPROXY=https://gocenter.io
+
+builds:
+  - binary: lagoon-cli
+    env:
+      - CGO_ENABLED=0
+      - GO111MODULE=on
+      - PKG=github.com/uselagoon/lagoon-cli
+    # Custom ldflags templates.
+    # Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser`.
+    ldflags:
+      - -s -w -X "{{.Env.PKG}}/cmd.lagoonCLIVersion={{.Version}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuild={{.Date}}" -X "{{.Env.PKG}}/cmd.lagoonCLIBuildGoVersion={{.Env.GOLANG_VERSION}}"
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+release:
+  # Repo in which the release will be created.
+  # Default is extracted from the origin remote URL or empty if its private hosted.
+  github:
+    owner: tobybellwood
+    name: lagoon-cli
+  name_template: "{{.ProjectName}}-v{{.Version}}"
+
+milestones:
+- repo:
+    owner: tobybellwood
+    name: lagoon-cli
+
+archives:
+  -
+    format: tar.gz
+    name_template: "{{ .ProjectName }}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: 'checksums.txt'
+  algorithm: sha256
+
+  # signs:
+#   - artifacts: checksum
+#     args: ["--batch", "-u", "{{ .Env.GPG_FINGERPRINT }}", "--output", "${signature}", "--detach-sign", "${artifact}"]
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+brews:
+  - name: lagoon
+    tap:
+      owner: tobybellwood
+      name: homebrew-lagoon-cli
+    homepage: "https://github.com/uselagoon/lagoon-cli"
+    description: "amazee.io's local development helper tool"
+    skip_upload: false
+    test: system "#{bin}/lagoon version"
+    install: bin.install "lagoon"

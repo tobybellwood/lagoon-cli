@@ -14,7 +14,7 @@ require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/machinebox/graphql v0.2.3-0.20181106130121-3a9253180225
 	github.com/manifoldco/promptui v0.9.0
-	github.com/pkg/browser v0.0.0-20180916011732-0a3d74bf9ce4
+	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 	github.com/skeema/knownhosts v1.3.0
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/pflag v1.0.5

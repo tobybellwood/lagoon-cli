@@ -25,7 +25,8 @@
         "groupName": "GitHub actions monthly minor/patch",
         "matchUpdateTypes": [
           "minor",
-          "patch"
+          "patch",
+          "digest"
         ],
         "schedule": ["on the last day of the month"],
         "automerge": true,
@@ -55,7 +56,8 @@
         "groupName": "Golang monthly minor/patch",
         "matchUpdateTypes": [
           "minor",
-          "patch"
+          "patch",
+          "digest"
         ],
         "schedule": ["on the last day of the month"],
         "postUpdateOptions": ["gomodTidy","gomodUpdateImportPaths"]

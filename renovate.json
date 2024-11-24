@@ -28,7 +28,7 @@
           "patch",
           "digest"
         ],
-        "schedule": ["on the last day of the month"],
+        "schedule": ["on the first day of the month"],
         "automerge": true,
         "automergeType": "pr"
       },
@@ -59,8 +59,9 @@
           "patch",
           "digest"
         ],
-        "schedule": ["on the last day of the month"],
-        "postUpdateOptions": ["gomodTidy","gomodUpdateImportPaths"]
+        "schedule": ["on the first day of the month"],
+        "postUpdateOptions": ["gomodTidy","gomodUpdateImportPaths"],
+        "draftPR": true
       },
       {
         "matchManagers": [

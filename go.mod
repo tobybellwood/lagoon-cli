@@ -5,7 +5,7 @@ go 1.23
 require (
 	github.com/Masterminds/semver/v3 v3.3.1
 	github.com/golang-jwt/jwt v3.2.2+incompatible
-	github.com/google/go-github/v66 v66.0.0
+	github.com/google/go-github/v68 v68.0.0
 	github.com/google/uuid v1.6.0
 	github.com/guregu/null v4.0.0+incompatible
 	github.com/hashicorp/go-version v1.7.0

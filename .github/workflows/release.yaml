@@ -14,7 +14,7 @@ jobs:
       with:
         fetch-depth: "0"
     - name: Set up Go
-      uses: actions/setup-go@3041bf56c941b39c61721a86cd11f3bb1338122a # v5.2.0
+      uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
       with:
         go-version: 1.23
     - name: Build CLI
@@ -30,7 +30,7 @@ jobs:
         rm ./builds/README.md ./builds/release_template.md
         for BUILD in builds/*; do tar --transform="flags=r;s|${BUILD#builds/}|lagoon|" -czf "$BUILD.tar.gz" -C builds "${BUILD#builds/}"; done
     - name: Generate SBOM from Github API
-      uses: advanced-security/sbom-generator-action@375dee8e6144d9fd0ec1f5667b4f6fb4faacefed # v0.0.1
+      uses: advanced-security/sbom-generator-action@6fe43abf522b2e7a19bc769aec1e6c848614b517 # v0.0.2
       id: sbom
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -39,13 +39,13 @@ jobs:
       env:
         GITHUB_SBOM_PATH: ${{ steps.sbom.outputs.fileName }}
     - name: Create GitHub Release
-      uses: softprops/action-gh-release@7b4da11513bf3f43f9999e90eabced41ab8bb048 # v2.2.0
+      uses: softprops/action-gh-release@c95fe1489396fe8a9eb87c0abf8aa5b2ef267fda # v2.2.1
       if: startsWith(github.ref, 'refs/tags/')
       with:
         files: |
           builds/*
           sbom.spdx.json
     - name: Attest build provenance
-      uses: actions/attest-build-provenance@7668571508540a607bdfd90a87a560489fe372eb # v2.1.0
+      uses: actions/attest-build-provenance@520d128f165991a6c774bcb264f323e3d70747f4 # v2.2.0
       with:
         subject-path: "builds/*"

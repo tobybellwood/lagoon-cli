@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
-    - uses: actions/setup-go@d35c59abb061a4a6fb18e82ac0862c26744d6ab5 # v5.5.0
+    - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
       with:
         go-version: stable
     - name: Calculate coverage
@@ -20,7 +20,7 @@ jobs:
         # remove generated code from coverage calculation
         grep -Ev 'internal/mock|_enumer.go' cover.out.raw > cover.out
     - name: Generage coverage badge
-      uses: vladopajic/go-test-coverage@d9ec07b8799c458a7bc1f9b36d14261746d63529 # v2.18.0
+      uses: vladopajic/go-test-coverage@679e6807f68f2440a4c43d386442a1d0041838a9 # v2.18.3
       with:
         profile: cover.out
         local-prefix: github.com/${{ github.repository }}

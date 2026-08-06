@@ -14,7 +14,7 @@ jobs:
       # Needed for GitHub OIDC token if publish_results is true
       id-token: write
     steps:
-    - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
     - name: Run analysis
       uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
       with:
@@ -26,6 +26,6 @@ jobs:
         # of the value entered here.
         publish_results: true
     - name: Upload SARIF results to code scanning
-      uses: github/codeql-action/upload-sarif@439137e1b50c27ba9e2f9befc93e43091b449c34 # v3.32.0
+      uses: github/codeql-action/upload-sarif@5595ccaf912efad79be6eef63a5619ff05969be3 # v4.37.6
       with:
         sarif_file: results.sarif
